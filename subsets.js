@@ -25,11 +25,12 @@ function subsets(nums) {
 
     function find(curr, remaining, start) {
         res.push(curr);
-        console.log('res', res);
+        // console.log('res', res);
+        console.log('curr', curr);
+        console.log('rem', remaining);
+        console.log('start', start)
         for (let i = start; i < remaining.length; i++) {
-            console.log('curr', curr);
             console.log('i', i);
-            console.log('start', start)
             find(
                 [...curr, remaining[i]],
                 [...remaining.slice(0, i), ...remaining.slice(i + 1)],
