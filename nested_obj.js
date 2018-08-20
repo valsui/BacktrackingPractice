@@ -2,13 +2,25 @@
 //function takes in the nested object and a path array where the last item in the array is what you want. 
 //it uses reduce to extract the desired information and check to see if the key exists in the object so that it doens't check undefined
 
-const getNestedObject = (nestedObj, pathArr) => {
+const getNestedObjectLoop = (nestedObj, pathArr, notFound = null) => {
     return pathArr.reduce((obj, key) => {
         // console.log('obj', obj);
-        // console.log('key', key);
-        return (obj && obj[key] !== 'undefined') ? obj[key] : undefined
+        // console.log('key', obj[key]);
+        return (obj && obj[key]) ? obj[key] : notFound
     }
         , nestedObj);
+}
+
+//recursive 
+const getNestedObject = (nestedObj, pathArr, notFound = null) => {
+    if(pathArr.length === 0) return nestedObj;
+    const current = pathArr[0];
+    if(nestedObj[current]){
+        nestedObj = nestedObj[current];
+        return getNestedObject(nestedObj, pathArr.slice(1), notFound);
+    }else{
+        return notFound;
+    }
 }
 
 //Ex: input nestedObj
@@ -130,3 +142,6 @@ const user1Posts = posts.reduce((posts, p) => {
 }, {});
 
 console.log(user1Posts);
+
+//get nonexistent item
+// console.log(getNestedObject(user, ['personalInfo', 'address', 'zip']))
