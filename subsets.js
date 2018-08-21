@@ -37,7 +37,7 @@ const subsets = (array) => {
     return results;
 }
 
-console.log(subsets([1, 2, 2]))
+// console.log(subsets([1, 2, 2]))
 
 // with duplicates in the input 
 // Example:
@@ -85,4 +85,7 @@ const subsetsNoDups = (array) => {
 }
 
 
-console.log(subsetsNoDups([2, 1, 2, 2]))
+console.log(subsetsNoDups([2, 1, 2, 1, 3]));
+
+//[[],[1],[1,1],[1,1,2],[1,1,2,2],[1,1,2,2,3],[1,1,2,3],[1,1,3],[1,2],[1,2,2],[1,2,2,3],[1,2,3],[1,3],[2],[2,2],[2,2,3],[2,3],[3]]
+
