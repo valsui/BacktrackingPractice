@@ -19,32 +19,70 @@ Output:
 */
 
 // leetcode solution
-
-function subsets(nums) {
-    let res = [];
-
-    function find(curr, remaining, start) {
-        res.push(curr);
-        // console.log('res', res);
-        console.log('curr', curr);
-        console.log('rem', remaining);
-        console.log('start', start)
-        for (let i = start; i < remaining.length; i++) {
-            console.log('i', i);
-            find(
-                [...curr, remaining[i]],
-                [...remaining.slice(0, i), ...remaining.slice(i + 1)],
-                start
+const subsets = (array) => {
+    let results = [];
+    const createSet = (current, remaining, startIdx) => {
+        results.push(current);
+        for( let i = startIdx; i < remaining.length; i++){
+            createSet(
+                [...current, remaining[i]],
+                [...remaining.slice(0,i), ...remaining.slice(i+1)],
+                startIdx
             );
+            startIdx++;
+        }   
+    }
 
-            start++;
+    createSet([], array, 0);
+    return results;
+}
+
+console.log(subsets([1, 2, 2]))
+
+// with duplicates in the input 
+// Example:
+
+// Input: [1, 2, 2]
+// Output:
+// [
+//     [2],
+//     [1],
+//     [1, 2, 2],
+//     [2, 2],
+//     [1, 2],
+//     []
+// ]
+
+const subsetsNoDups = (array) => {
+    let results = [];
+    array = array.sort((a,b) => a-b);
+
+    const createSet = (current, remaining, startIdx) => {
+        results.push(current);
+        for (let i = startIdx; i < remaining.length; i++) {
+            // console.log('current_i', i);
+            // console.log('results', results);
+            // console.log('current', current);
+            // console.log('remaining', remaining);
+            // console.log('start', startIdx);
+            if(remaining[i] === remaining[i-1]) {
+                // console.log('remaining', remaining);
+                // console.log('remaining[i]', remaining[i]);
+                // console.log('remaining[i-1]', remaining[i - 1]);
+                continue;
+            }
+            createSet(
+                [...current, remaining[i]],
+                [...remaining.slice(0, i), ...remaining.slice(i + 1)],
+                startIdx
+            );
+            startIdx++;
         }
     }
 
-    find([], nums, 0);
-
-    return res;
+    createSet([], array, 0);
+    return results;
 }
 
-subsets([1,2,3]);
 
+console.log(subsetsNoDups([2, 1, 2, 2]))
