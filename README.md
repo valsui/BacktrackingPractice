@@ -1,11 +1,10 @@
 ### Backtracking Practice (DFS or Branch and Bound)
 
-This repo just practices common backtracking algorithms with C# and JS
+This repo just practices common backtracking algorithms and other algorighthms in JS. Done so far:
 
 - subsets
-- permutations
-- combination sum 
-- palindrome partioning 
+- nested objects
+- valid soduku
 
 Solutions and problems are from this leetcode post:
 
