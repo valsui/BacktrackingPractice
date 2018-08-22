@@ -5,6 +5,7 @@ This repo just practices common backtracking algorithms and other algorighthms i
 - subsets
 - nested objects
 - valid soduku
+- n queens - end for single solution
 
 Solutions and problems are from this leetcode post:
 
