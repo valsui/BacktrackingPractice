@@ -73,3 +73,5 @@ Explanation: There exist two distinct solutions to the 4-queens puzzle as shown 
  }
 
 console.log(nQueensOneSolution(5));
+
+//all solutions
